@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Иван Генеральчик](https://up.htmlacademy.ru/ecmascript/3/user/227504).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Юрченко](https://up.htmlacademy.ru/ecmascript/3/user/487085).
 
 ---
 
