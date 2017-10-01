@@ -30,11 +30,23 @@ mainCentral.innerHTML = screen(i);
 });*/
 
 document.addEventListener(`keydown`, function (e) {
- e = e || window.event;
- if (e.altKey && e.keyCode === keyRight) {
-   mainCentral.innerHTML = screen(i + 1);
- }
- if (e.altKey && e.keyCode === keyLeft) {
-   mainCentral.innerHTML = screen(i - 1);
- }
+  e = e || window.event;
+  let b = i;
+  debugger;
+  if (e.altKey && e.keyCode === keyRight) {
+    if (b === 6) {
+      mainCentral.innerHTML = screen(b);
+    } else {
+      mainCentral.innerHTML = screen(b + 1);
+      i++;
+    }
+  }
+  if (e.altKey && e.keyCode === keyLeft) {
+    if (b === 0) {
+      mainCentral.innerHTML = screen(b);
+    } else {
+      mainCentral.innerHTML = screen(b - 1);
+      i--;
+    }
+  }
 });
