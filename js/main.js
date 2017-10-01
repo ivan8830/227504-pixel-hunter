@@ -1,14 +1,42 @@
 
 const templates = [...document.querySelectorAll(`template`)];
+let i = 0;
+const keyAlt = 18;
+const keyRight = 39;
+const keyLeft = 37;
 const screen = function (n) {
-  return templates[n];
-  /*let template =
-  let newTemplate = document.querySelector(`${template}`);
-   newTemplate;*/
+  let template = templates[n].innerHTML;
+  return template;
 };
 
-debugger;
 let mainCentral = document.querySelector(`.central`);
-mainCentral.innerHTML = screen(0);
+mainCentral.innerHTML = screen(i);
+
+document.addEventListener(`keydown`, function (evt) {
+  if (evt.keyCode === keyAlt) {
+    if (evt.keyCode === keyRight) {
+      mainCentral.innerHTML = screen(i + 1);
+    }
+    if (evt.keyCode === keyLeft) {
+      mainCentral.innerHTML = screen(i - 1);
+    }
+  }
+  /* if (evt.keyCode === keyAlt && keyRight) {
+   mainCentral.innerHTML = screen(i + 1);
+ }
+ if (evt.keyCode === keyAlt && keyLeft) {
+   mainCentral.innerHTML = screen(i - 1);
+ }
+});
+
+document.addEventListener(`keydown`, function (evt, e) {
+ e = e || window.event;
+ if (e.altKey && e.keyCode === 57) {
+   mainCentral.innerHTML = screen(i + 1);
+ }
+ if (e.altKey && e.keyCode === -19) {
+   mainCentral.innerHTML = screen(i - 1);
+ }*/
+});
 
 
