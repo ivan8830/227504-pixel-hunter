@@ -1,7 +1,7 @@
 
 const templates = [...document.querySelectorAll(`template`)];
 let i = 0;
-const keyAlt = 18;
+
 const keyRight = 39;
 const keyLeft = 37;
 const screen = function (n) {
@@ -12,7 +12,7 @@ const screen = function (n) {
 let mainCentral = document.querySelector(`.central`);
 mainCentral.innerHTML = screen(i);
 
-document.addEventListener(`keydown`, function (evt) {
+/*document.addEventListener(`keydown`, function (evt) {
   if (evt.keyCode === keyAlt) {
     if (evt.keyCode === keyRight) {
       mainCentral.innerHTML = screen(i + 1);
@@ -21,22 +21,20 @@ document.addEventListener(`keydown`, function (evt) {
       mainCentral.innerHTML = screen(i - 1);
     }
   }
-  /* if (evt.keyCode === keyAlt && keyRight) {
+   if (evt.keyCode === keyAlt && keyRight) {
    mainCentral.innerHTML = screen(i + 1);
  }
  if (evt.keyCode === keyAlt && keyLeft) {
    mainCentral.innerHTML = screen(i - 1);
  }
-});
+});*/
 
-document.addEventListener(`keydown`, function (evt, e) {
+document.addEventListener(`keydown`, function (e) {
  e = e || window.event;
- if (e.altKey && e.keyCode === 57) {
+ if (e.altKey && e.keyCode === keyRight) {
    mainCentral.innerHTML = screen(i + 1);
  }
- if (e.altKey && e.keyCode === -19) {
+ if (e.altKey && e.keyCode === keyLeft) {
    mainCentral.innerHTML = screen(i - 1);
- }*/
+ }
 });
-
-
