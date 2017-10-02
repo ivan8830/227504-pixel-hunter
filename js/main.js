@@ -1,4 +1,3 @@
-
 const templates = [...document.querySelectorAll(`template`)];
 const mainCentral = document.querySelector(`.central`);
 
@@ -14,8 +13,8 @@ const renderScreen = function (n) {
 renderScreen(i);
 
 document.addEventListener(`keydown`, function (e) {
-  if (e.altKey && e.keyCode === keyRight && i < templates.length) {
-    renderScreen(i++);
+  if (e.altKey && e.keyCode === keyRight && i < templates.length - 1) {
+    renderScreen(++i);
   }
   if (e.altKey && e.keyCode === keyLeft && i > 0) {
     renderScreen(i--);
