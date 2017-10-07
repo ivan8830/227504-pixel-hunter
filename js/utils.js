@@ -8,4 +8,5 @@ const mainCentral = document.querySelector(`.central`);
 
 export const renderScreen = function (name) {
   mainCentral.innerHTML = name.innerHTML;
+  document.appendChild(name);
 };

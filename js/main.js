@@ -1,5 +1,10 @@
-import {renderScreen} from "./utils";
-import introElement from "./intro";
-import rulesElement from "./rules";
+//import {renderScreen} from "./utils";
 
+import rulesElement from "./rules";
+debugger;
+const mainCentral = document.querySelector(`.central`);
+const renderScreen = function (name) {
+  mainCentral.innerHTML = name.innerHTML;
+  document.appendChild(name);
+};
 renderScreen(rulesElement);
