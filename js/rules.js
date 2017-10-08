@@ -1,7 +1,9 @@
-import {getElementFromTemplate} from "./utils";
+import {getElementFromTemplate, renderScreen} from "./utils";
+import gameOneElement from "./game-1";
+import greetingElement from "./greeting";
 
 const rulesElement = getElementFromTemplate(`
-<header class="header">
+  <header class="header">
     <div class="header__back">
       <button class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
@@ -34,7 +36,26 @@ const rulesElement = getElementFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>
+`);
 
 export default rulesElement;
 
+const buttonName = rulesElement.querySelector(`.rules__button`);
+const inputRules = rulesElement.querySelector(`.rules__input`);
+
+inputRules.addEventListener(`input`, function () {
+  if (inputRules.value !== `0`) {
+    buttonName.disabled = false;
+    buttonName.addEventListener(`click`, function () {
+      renderScreen(gameOneElement);
+    });
+  }
+});
+
+const blockBack = rulesElement.querySelector(`.back`);
+
+
+blockBack.addEventListener(`click`, function () {
+  renderScreen(greetingElement);
+});

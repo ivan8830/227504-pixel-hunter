@@ -1,7 +1,8 @@
-import {getElementFromTemplate} from "./utils";
+import {getElementFromTemplate, renderScreen} from "./utils";
+import greetingElement from "./greeting";
 
 const statsElement = getElementFromTemplate(`
-<header class="header">
+  <header class="header">
     <div class="header__back">
       <button class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
@@ -118,6 +119,13 @@ const statsElement = getElementFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>
+`);
 
 export default statsElement;
+
+const buttonBack = statsElement.querySelector(`.back`);
+
+buttonBack.addEventListener(`click`, function () {
+  renderScreen(greetingElement);
+});

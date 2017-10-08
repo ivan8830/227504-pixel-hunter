@@ -1,7 +1,9 @@
-import {getElementFromTemplate} from "./utils";
+import {getElementFromTemplate, renderScreen} from "./utils";
+import gameThreeElement from "./game-3";
+import greetingElement from "./greeting";
 
 const gameTwoElement = getElementFromTemplate(`
-<header class="header">
+  <header class="header">
     <div class="header__back">
       <button class="back">
         <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
@@ -54,6 +56,23 @@ const gameTwoElement = getElementFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>
+`);
 
 export default gameTwoElement;
+
+const gameTwoForm = gameTwoElement.querySelector(`.game__content`);
+const gameInput1 = gameTwoElement.querySelector(`input[type = radio][value = photo]`);
+const gameInput2 = gameTwoElement.querySelector(`input[type = radio][value = paint]`);
+
+gameTwoForm.addEventListener(`click`, function () {
+  if (gameInput1.checked || gameInput2.checked) {
+    renderScreen(gameThreeElement);
+  }
+});
+
+const buttonBack = gameTwoElement.querySelector(`.back`);
+
+buttonBack.addEventListener(`click`, function () {
+  renderScreen(greetingElement);
+});

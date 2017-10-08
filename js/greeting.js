@@ -1,6 +1,8 @@
-import {getElementFromTemplate} from "./utils";
+import {getElementFromTemplate, renderScreen} from "./utils";
+import rulesElement from "./rules";
 
-const greetingElement = getElementFromTemplate(`<div class="greeting central--blur">
+const greetingElement = getElementFromTemplate(`
+  <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
     <div class="greeting__challenge">
@@ -22,6 +24,12 @@ const greetingElement = getElementFromTemplate(`<div class="greeting central--bl
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>
+`);
 
 export default greetingElement;
+
+const pointer = greetingElement.querySelector(`.greeting__continue`);
+pointer.addEventListener(`click`, function () {
+  renderScreen(rulesElement);
+});

@@ -1,4 +1,5 @@
-import {getElementFromTemplate} from "./utils";
+import {getElementFromTemplate, renderScreen} from "./utils";
+import greetingElement from "./greeting";
 
 const introElement = getElementFromTemplate(` 
   <div id="main" class="central__content">
@@ -16,6 +17,12 @@ const introElement = getElementFromTemplate(`
       <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
-  </footer>`);
+  </footer>
+`);
 
 export default introElement;
+
+const star = introElement.querySelector(`.intro__asterisk`);
+star.addEventListener(`click`, function () {
+  renderScreen(greetingElement);
+});

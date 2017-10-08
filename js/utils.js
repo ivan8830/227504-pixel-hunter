@@ -7,6 +7,6 @@ export function getElementFromTemplate(html) {
 const mainCentral = document.querySelector(`.central`);
 
 export const renderScreen = function (name) {
-  mainCentral.innerHTML = name.innerHTML;
-  document.appendChild(name);
+  mainCentral.innerHTML = ``;
+  mainCentral.appendChild(name);
 };
