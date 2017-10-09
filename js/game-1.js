@@ -77,22 +77,10 @@ const gameInput2 = gameOneElement.querySelector(`input[name = question2][value =
 const gameInput3 = gameOneElement.querySelector(`input[name = question1][value = paint]`);
 const gameInput4 = gameOneElement.querySelector(`input[name = question2][value = paint]`);
 const gameForm = gameOneElement.querySelector(`.game__content`);
+
 gameForm.addEventListener(`click`, function () {
-  if (gameInput1.checked || gameInput3.checked) {
-    if (gameInput2.checked) {
-      renderScreen(gameTwoElement);
-    }
-    if (gameInput4.checked) {
-      renderScreen(gameTwoElement);
-    }
-  }
-  if (gameInput2.checked || gameInput4.checked) {
-    if (gameInput1.checked) {
-      renderScreen(gameTwoElement);
-    }
-    if (gameInput3.checked) {
-      renderScreen(gameTwoElement);
-    }
+  if ((gameInput1.checked || gameInput3.checked) && (gameInput2.checked || gameInput4.checked)) {
+    renderScreen(gameTwoElement);
   }
 });
 

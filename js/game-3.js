@@ -58,13 +58,10 @@ const gameThreeElement = getElementFromTemplate(`
 `);
 
 export default gameThreeElement;
-const gameThreeForm = gameThreeElement.querySelector(`.game__content`)
-const gamePictures = [...gameThreeElement.querySelectorAll(`.game__option`)];
+const gameThreeForm = gameThreeElement.querySelector(`.game__content`);
 
 gameThreeForm.addEventListener(`click`, function () {
-  if (gamePictures[0].checked || gamePictures[1].checked || gamePictures[2].checked) {
-    renderScreen(statsElement);
-  }
+  renderScreen(statsElement);
 });
 
 const buttonBack = gameThreeElement.querySelector(`.back`);

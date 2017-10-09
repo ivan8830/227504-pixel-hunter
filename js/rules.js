@@ -40,21 +40,20 @@ const rulesElement = getElementFromTemplate(`
 `);
 
 export default rulesElement;
-
-const buttonName = rulesElement.querySelector(`.rules__button`);
+const rulesForm = rulesElement.querySelector(`.rules__form`);
+const buttonRules = rulesElement.querySelector(`.rules__button`);
 const inputRules = rulesElement.querySelector(`.rules__input`);
 
-inputRules.addEventListener(`input`, function () {
-  if (inputRules.value !== `0`) {
-    buttonName.disabled = false;
-    buttonName.addEventListener(`click`, function () {
-      renderScreen(gameOneElement);
-    });
-  }
+inputRules.addEventListener(`input`, function (e) {
+  buttonRules.disabled = e.target.value.length === 0;
+});
+
+rulesForm.addEventListener(`submit`, function (e) {
+  renderScreen(gameOneElement);
+  e.preventDefault();
 });
 
 const blockBack = rulesElement.querySelector(`.back`);
-
 
 blockBack.addEventListener(`click`, function () {
   renderScreen(greetingElement);
