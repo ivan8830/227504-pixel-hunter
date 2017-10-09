@@ -1,7 +1,7 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import rulesElement from "./rules";
+import rulScreen from "./rules";
 
-const greetingElement = getElementFromTemplate(`
+const greeScreen = getElementFromTemplate(`
   <div class="greeting central--blur">
     <div class="greeting__logo">
       <img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter">
@@ -33,9 +33,9 @@ const greetingElement = getElementFromTemplate(`
   </footer>
 `);
 
-export default greetingElement;
+export default greeScreen;
 
-const pointer = greetingElement.querySelector(`.greeting__continue`);
+const pointer = greeScreen.querySelector(`.greeting__continue`);
 pointer.addEventListener(`click`, function () {
-  renderScreen(rulesElement);
+  renderScreen(rulScreen);
 });

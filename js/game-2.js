@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import gameThreeElement from "./game-3";
-import greetingElement from "./greeting";
+import screenGame3 from "./game-3";
+import greeScreen from "./greeting";
 
-const gameTwoElement = getElementFromTemplate(`
+const screenGame2 = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -59,20 +59,20 @@ const gameTwoElement = getElementFromTemplate(`
   </footer>
 `);
 
-export default gameTwoElement;
+export default screenGame2;
 
-const gameTwoForm = gameTwoElement.querySelector(`.game__content`);
-const gameInput1 = gameTwoElement.querySelector(`input[type = radio][value = photo]`);
-const gameInput2 = gameTwoElement.querySelector(`input[type = radio][value = paint]`);
+const gameForm = screenGame2.querySelector(`.game__content`);
+const input1 = screenGame2.querySelector(`input[type = radio][value = photo]`);
+const input2 = screenGame2.querySelector(`input[type = radio][value = paint]`);
 
-gameTwoForm.addEventListener(`click`, function () {
-  if (gameInput1.checked || gameInput2.checked) {
-    renderScreen(gameThreeElement);
+gameForm.addEventListener(`click`, function () {
+  if (input1.checked || input2.checked) {
+    renderScreen(screenGame3);
   }
 });
 
-const buttonBack = gameTwoElement.querySelector(`.back`);
+const back = screenGame2.querySelector(`.back`);
 
-buttonBack.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+back.addEventListener(`click`, function () {
+  renderScreen(greeScreen);
 });

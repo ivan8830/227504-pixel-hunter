@@ -1,5 +1,5 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import greetingElement from "./greeting";
+import greeScreen from "./greeting";
 
 const statsElement = getElementFromTemplate(`
   <header class="header">
@@ -124,8 +124,8 @@ const statsElement = getElementFromTemplate(`
 
 export default statsElement;
 
-const buttonBack = statsElement.querySelector(`.back`);
+const back = statsElement.querySelector(`.back`);
 
-buttonBack.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+back.addEventListener(`click`, function () {
+  renderScreen(greeScreen);
 });

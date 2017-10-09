@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import statsElement from "./stats";
-import greetingElement from "./greeting";
+import greeScreen from "./greeting";
 
-const gameThreeElement = getElementFromTemplate(`
+const screenGame3 = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -57,15 +57,15 @@ const gameThreeElement = getElementFromTemplate(`
   </footer>
 `);
 
-export default gameThreeElement;
-const gameThreeForm = gameThreeElement.querySelector(`.game__content`);
+export default screenGame3;
+const gameForm = screenGame3.querySelector(`.game__content`);
 
-gameThreeForm.addEventListener(`click`, function () {
+gameForm.addEventListener(`click`, function () {
   renderScreen(statsElement);
 });
 
-const buttonBack = gameThreeElement.querySelector(`.back`);
+const back = screenGame3.querySelector(`.back`);
 
-buttonBack.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+back.addEventListener(`click`, function () {
+  renderScreen(greeScreen);
 });

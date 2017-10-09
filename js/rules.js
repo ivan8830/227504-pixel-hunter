@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import gameOneElement from "./game-1";
-import greetingElement from "./greeting";
+import screenGame1 from "./game-1";
+import greeScreen from "./greeting";
 
-const rulesElement = getElementFromTemplate(`
+const rulScreen = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -39,22 +39,22 @@ const rulesElement = getElementFromTemplate(`
   </footer>
 `);
 
-export default rulesElement;
-const rulesForm = rulesElement.querySelector(`.rules__form`);
-const buttonRules = rulesElement.querySelector(`.rules__button`);
-const inputRules = rulesElement.querySelector(`.rules__input`);
+export default rulScreen;
+const rulesForm = rulScreen.querySelector(`.rules__form`);
+const button = rulScreen.querySelector(`.rules__button`);
+const input = rulScreen.querySelector(`.rules__input`);
 
-inputRules.addEventListener(`input`, function (e) {
-  buttonRules.disabled = e.target.value.length === 0;
+input.addEventListener(`input`, function (e) {
+  button.disabled = e.target.value.length === 0;
 });
 
 rulesForm.addEventListener(`submit`, function (e) {
-  renderScreen(gameOneElement);
+  renderScreen(screenGame1);
   e.preventDefault();
 });
 
-const blockBack = rulesElement.querySelector(`.back`);
+const back = rulScreen.querySelector(`.back`);
 
-blockBack.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+back.addEventListener(`click`, function () {
+  renderScreen(greeScreen);
 });

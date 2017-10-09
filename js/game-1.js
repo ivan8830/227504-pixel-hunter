@@ -1,8 +1,8 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import gameTwoElement from "./game-2";
-import greetingElement from "./greeting";
+import screenGame2 from "./game-2";
+import greeScreen from "./greeting";
 
-const gameOneElement = getElementFromTemplate(`
+const screenGame1 = getElementFromTemplate(`
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -70,22 +70,22 @@ const gameOneElement = getElementFromTemplate(`
   </footer>
 `);
 
-export default gameOneElement;
+export default screenGame1;
 
-const gameInput1 = gameOneElement.querySelector(`input[name = question1][value = photo]`);
-const gameInput2 = gameOneElement.querySelector(`input[name = question2][value = photo]`);
-const gameInput3 = gameOneElement.querySelector(`input[name = question1][value = paint]`);
-const gameInput4 = gameOneElement.querySelector(`input[name = question2][value = paint]`);
-const gameForm = gameOneElement.querySelector(`.game__content`);
+const input1 = screenGame1.querySelector(`input[name = question1][value = photo]`);
+const input2 = screenGame1.querySelector(`input[name = question2][value = photo]`);
+const input3 = screenGame1.querySelector(`input[name = question1][value = paint]`);
+const input4 = screenGame1.querySelector(`input[name = question2][value = paint]`);
+const gameForm = screenGame1.querySelector(`.game__content`);
 
 gameForm.addEventListener(`click`, function () {
-  if ((gameInput1.checked || gameInput3.checked) && (gameInput2.checked || gameInput4.checked)) {
-    renderScreen(gameTwoElement);
+  if ((input1.checked || input3.checked) && (input2.checked || input4.checked)) {
+    renderScreen(screenGame2);
   }
 });
 
-const buttonBack = gameOneElement.querySelector(`.back`);
+const back = screenGame1.querySelector(`.back`);
 
-buttonBack.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+back.addEventListener(`click`, function () {
+  renderScreen(greeScreen);
 });

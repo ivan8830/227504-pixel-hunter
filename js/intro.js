@@ -1,5 +1,5 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
-import greetingElement from "./greeting";
+import greeScreen from "./greeting";
 
 const introElement = getElementFromTemplate(` 
   <div id="main" class="central__content">
@@ -24,5 +24,5 @@ export default introElement;
 
 const star = introElement.querySelector(`.intro__asterisk`);
 star.addEventListener(`click`, function () {
-  renderScreen(greetingElement);
+  renderScreen(greeScreen);
 });
