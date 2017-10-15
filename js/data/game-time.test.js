@@ -5,7 +5,7 @@ describe(`createTimer`, () => {
   it(`test`, () => {
     const timer = createTimer(2);
     let ended = false;
-    timer.addEventlistener(`end`, function () {
+    timer.addEventListener(`end`, function () {
       ended = true;
     });
     timer.tick();
