@@ -1,17 +1,18 @@
 export function createTimer(second) {
-  const timer = {
-    time: second,
-    tick() {
-      this.time--;
+  const timer = second;
+  return {
+    addEventListener(name, callback) {
+      if (!callback[name]) {
+        throw Error(`Время еще невышло`);
+      }
+      callback[name].push(callback);
     },
-    onEnd() {
-      if (this.time === 0) {
-        return true;
-      } else {
-        return false;
+    tick() {
+      this.timer--;
+      if (timer === 0) {
+        const call = (fn) => fn();
+        timer.end.forEach(call);
       }
     }
   };
-  return timer;
 }
-

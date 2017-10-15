@@ -4,9 +4,13 @@ import {createTimer} from "./game-time";
 describe(`createTimer`, () => {
   it(`test`, () => {
     const timer = createTimer(2);
+    let ended = false;
+    timer.addEventlistener(`end`, function () {
+      ended = true;
+    });
     timer.tick();
-    assert.equal(timer.onEnd(), false);
+    assert.equal(ended, false);
     timer.tick();
-    assert.equal(timer.onEnd(), true);
+    assert.equal(ended, true);
   });
 });
