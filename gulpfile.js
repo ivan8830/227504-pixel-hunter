@@ -65,7 +65,6 @@ gulp.task('imagemin', ['copy'], function () {
     .pipe(gulp.dest('build/img'));
 });
 
-
 gulp.task('copy-html', function () {
   return gulp.src('*.{html,ico}')
     .pipe(gulp.dest('build'))
