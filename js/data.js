@@ -1,4 +1,5 @@
 export const initialState = {
+  level: `intro`,
   time: 0,
   lives: 3
 };

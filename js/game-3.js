@@ -2,7 +2,8 @@ import {getElementFromTemplate, renderScreen} from "./utils";
 import statsElement from "./stats";
 import greeScreen from "./greeting";
 
-const screenGame3 = `
+const screenGame3 = function () {
+  const game3 = `
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
@@ -31,18 +32,9 @@ const screenGame3 = `
       </ul>
     </div>
   </div>
-  <footer class="footer">
-    <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-    <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-    <div class="footer__social-links">
-      <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-      <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-      <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-      <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-    </div>
-  </footer>
 `;
-
+  return getElementFromTemplate(game3);
+};
 export default screenGame3;
 const gameForm = screenGame3.querySelector(`.game__content`);
 

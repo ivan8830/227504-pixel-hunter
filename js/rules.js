@@ -2,7 +2,7 @@ import {getElementFromTemplate, renderScreen} from "./utils";
 import screenGame1 from "./game-1";
 import greeScreen from "./greeting";
 import {headerTemplateGame} from "./header-game";
-import {footerTemplate} from "./footer";
+
 
 const rulScreen = function (data) {
   const rules = `
