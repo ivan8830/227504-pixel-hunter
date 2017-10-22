@@ -1,7 +1,7 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import greeScreen from "./greeting";
 
-const statsElement = function() {
+const statsElement = function () {
   const stata = `
   <div class="result">
     <h1>Победа!</h1>

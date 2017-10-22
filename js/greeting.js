@@ -1,8 +1,9 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import rulScreen from "./rules";
+import {data} from "./data";
 
 
-const greeScreen = function (data) {
+const greeScreen = () => {
   const greeting = `
   <div class="greeting central--blur">
     <div class="greeting__logo">
@@ -10,8 +11,12 @@ const greeScreen = function (data) {
     </div>
     <h1 class="greeting__asterisk">*</h1>
     <div class="greeting__challenge">
-      <h3>${data.content.title}</h3>
-      <p>${data.content.text}</p>
+      <h3>Лучшие художники-фотореалисты бросают&nbsp;тебе&nbsp;вызов!</h3>
+      <p>Правила игры просты.<br>
+        Нужно отличить рисунок&nbsp;от фотографии и сделать выбор.<br>
+        Задача кажется тривиальной, но не думай, что все так просто.<br>
+        Фотореализм обманчив и коварен.<br>
+        Помни, главное — смотреть очень внимательно.</p></p>
     </div>
     <div class="greeting__continue">
       <span>
@@ -20,12 +25,12 @@ const greeScreen = function (data) {
     </div>
   </div>
 `;
+  const pointer = greeScreen.querySelector(`.greeting__continue`);
+  pointer.addEventListener(`click`, function () {
+    renderScreen(rulScreen(data));
+  });
   return getElementFromTemplate(greeting);
 };
 
-export default greeScreen;
+export default greeScreen(data);
 
-const pointer = greeScreen.querySelector(`.greeting__continue`);
-pointer.addEventListener(`click`, function () {
-  renderScreen(rulScreen);
-});
