@@ -1,10 +1,11 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import rulScreen from "./rules";
 import {data} from "./data";
+import {footerTemplate} from "./footer";
 
 
-const greeScreen = () => {
-  const greeting = `
+const greeScreen = function () {
+  const greeting = getElementFromTemplate(`
   <div class="greeting central--blur">
     <div class="greeting__logo">
       <img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter">
@@ -24,13 +25,15 @@ const greeScreen = () => {
       </span>
     </div>
   </div>
-`;
-  const pointer = greeScreen.querySelector(`.greeting__continue`);
+  ${footerTemplate()}
+`);
+
+  const pointer = greeting.querySelector(`.greeting__continue`);
   pointer.addEventListener(`click`, function () {
     renderScreen(rulScreen(data));
   });
-  return getElementFromTemplate(greeting);
+  return greeting;
 };
 
-export default greeScreen(data);
+export default greeScreen;
 

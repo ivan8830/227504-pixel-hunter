@@ -1,8 +1,18 @@
 
-import {getElementFromTemplate} from "./utils";
-import {data} from "./data";
-
-export const headerTemplateGame = function () {
+export const headerTemplateGame = function (data, withoutLives) {
+  const lives = withoutLives ? `` : `
+    <h1 class="game__timer">${data.time}</h1>
+    <div class="game__lives">
+    ${new Array(3 - data.life).fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
+      .join(``)}
+    ${new Array(data.life).fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
+      .join(``)}
+    </div>
+  </header>`;
+  const element = `
+  <div>
+    ${lives}
+  </div>`;
   const headerGame = `<header class="header">
     <div class="header__back">
       <button class="back">
@@ -10,17 +20,10 @@ export const headerTemplateGame = function () {
         <img src="img/logo_small.svg" width="101" height="44">
       </button>
     </div>
-    <h1 class="game__timer">${data.time}</h1>
-    <div class="game__lives">
-    ${new Array(3 - data.life)
-      .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
-      .join(``)}
-    ${new Array(data.life)
-      .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
-      .join(``)}
+    ${element}
     </div>
   </header>`;
-  return getElementFromTemplate(headerGame);
+  return headerGame;
 };
 
 

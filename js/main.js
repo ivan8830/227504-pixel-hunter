@@ -1,7 +1,7 @@
 import {renderScreen} from "./utils";
 import {data} from "./data";
-import greeScreen from "./greeting";
+import introElement from "./intro";
 
-renderScreen(greeScreen(data));
+renderScreen(introElement(data));
 
 

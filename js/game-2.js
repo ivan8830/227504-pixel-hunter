@@ -1,9 +1,13 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import screenGame3 from "./game-3";
 import greeScreen from "./greeting";
+import {footerTemplate} from "./footer";
+import {data} from "./data";
+import {headerTemplateGame} from "./header-game";
 
 const screenGame2 = function () {
-  const game2 = `
+  const game2 = getElementFromTemplate(`
+  ${headerTemplateGame(data, false)}
   <div class="game">
     <p class="game__task">Угадай, фото или рисунок?</p>
     <form class="game__content  game__content--wide">
@@ -34,24 +38,26 @@ const screenGame2 = function () {
       </ul>
     </div>
   </div>
-`;
-  return getElementFromTemplate(game2);
+  ${footerTemplate()}
+`);
+  const gameForm = game2.querySelector(`.game__content`);
+  const input1 = game2.querySelector(`input[type = radio][value = photo]`);
+  const input2 = game2.querySelector(`input[type = radio][value = paint]`);
+
+  gameForm.addEventListener(`click`, function () {
+    if (input1.checked || input2.checked) {
+      renderScreen(screenGame3);
+    }
+  });
+
+  const back = game2.querySelector(`.back`);
+
+  back.addEventListener(`click`, function () {
+    renderScreen(greeScreen);
+  });
+  return game2;
 };
 
 export default screenGame2;
 
-const gameForm = screenGame2.querySelector(`.game__content`);
-const input1 = screenGame2.querySelector(`input[type = radio][value = photo]`);
-const input2 = screenGame2.querySelector(`input[type = radio][value = paint]`);
 
-gameForm.addEventListener(`click`, function () {
-  if (input1.checked || input2.checked) {
-    renderScreen(screenGame3);
-  }
-});
-
-const back = screenGame2.querySelector(`.back`);
-
-back.addEventListener(`click`, function () {
-  renderScreen(greeScreen);
-});

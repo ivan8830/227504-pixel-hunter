@@ -1,14 +1,19 @@
-import {getElementFromTemplate, renderScreen} from "./utils";
-import screenGame2 from "./game-2";
+import {getElementFromTemplate, getNumber, renderScreen} from "./utils";
 import greeScreen from "./greeting";
+import {footerTemplate} from "./footer";
+import {data, photo} from "./data";
+import {headerTemplateGame} from "./header-game";
+import statsElement from "./stats";
 
 const screenGame1 = function () {
-  const game1 = `
+  const number = getNumber(0, 2);
+  const game1 = getElementFromTemplate(`
+  ${headerTemplateGame(data, false)}
   <div class="game">
     <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
     <form class="game__content">
       <div class="game__option">
-        <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
+        <img src="${photo.paintings[number]}" alt="Option 1" width="468" height="458">
         <label class="game__answer game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
@@ -19,7 +24,7 @@ const screenGame1 = function () {
         </label>
       </div>
       <div class="game__option">
-        <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
+        <img src="${photo.paintings[number]}" alt="Option 2" width="468" height="458">
         <label class="game__answer  game__answer--photo">
           <input name="question2" type="radio" value="photo">
           <span>Фото</span>
@@ -32,39 +37,53 @@ const screenGame1 = function () {
     </form>
     <div class="stats">
       <ul class="stats">
-        <li class="stats__result stats__result--wrong"></li>
+      <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--fast"></li>
         <li class="stats__result stats__result--correct"></li>
+        <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--slow"></li>
         <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--unknown"></li>
+        <li class="stats__result stats__result--fast"></li>
         <li class="stats__result stats__result--unknown"></li>
       </ul>
     </div>
   </div>
-`;
-  return getElementFromTemplate(game1);
-};
+  ${footerTemplate()}
+`);
 
-export default screenGame1;
+  const input1 = game1.querySelector(`input[name = question1][value = photo]`);
+  const input2 = game1.querySelector(`input[name = question2][value = photo]`);
+  const input3 = game1.querySelector(`input[name = question1][value = paint]`);
+  const input4 = game1.querySelector(`input[name = question2][value = paint]`);
+  const gameForm = game1.querySelector(`.game__content`);
+  function next(stan, answer) {
+    if (stan.life < 1) {
+      renderScreen(statsElement(stan));
+      return;
+    }
 
-const input1 = screenGame1.querySelector(`input[name = question1][value = photo]`);
-const input2 = screenGame1.querySelector(`input[name = question2][value = photo]`);
-const input3 = screenGame1.querySelector(`input[name = question1][value = paint]`);
-const input4 = screenGame1.querySelector(`input[name = question2][value = paint]`);
-const gameForm = screenGame1.querySelector(`.game__content`);
+    if (stan.answers.length >= 10) {
+      renderScreen(statsElement(stan));
+      return;
+    }
 
-gameForm.addEventListener(`click`, function () {
-  if ((input1.checked || input3.checked) && (input2.checked || input4.checked)) {
-    renderScreen(screenGame2);
+    data.answers.push(answer);
+    renderScreen(screenGame1(data));
   }
-});
 
-const back = screenGame1.querySelector(`.back`);
+  gameForm.addEventListener(`click`, function () {
+    if ((input1.checked || input3.checked) && (input2.checked || input4.checked)) {
+      next(data, 100);
+    }
+  });
 
-back.addEventListener(`click`, function () {
-  renderScreen(greeScreen);
-});
+  const back = game1.querySelector(`.back`);
+
+  back.addEventListener(`click`, function () {
+    renderScreen(greeScreen(data));
+  });
+  return game1;
+};
+export default screenGame1;

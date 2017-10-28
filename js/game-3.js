@@ -1,9 +1,13 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import statsElement from "./stats";
 import greeScreen from "./greeting";
+import {footerTemplate} from "./footer";
+import {data} from "./data";
+import {headerTemplateGame} from "./header-game";
 
 const screenGame3 = function () {
-  const game3 = `
+  const game3 = getElementFromTemplate(`
+  ${headerTemplateGame(data, false)}
   <div class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
@@ -32,18 +36,20 @@ const screenGame3 = function () {
       </ul>
     </div>
   </div>
-`;
-  return getElementFromTemplate(game3);
+  ${footerTemplate()}
+`);
+  const gameForm = game3.querySelector(`.game__content`);
+
+  gameForm.addEventListener(`click`, function () {
+    renderScreen(statsElement(data));
+  });
+
+  const back = game3.querySelector(`.back`);
+
+  back.addEventListener(`click`, function () {
+    renderScreen(greeScreen(data));
+  });
+  return game3;
 };
 export default screenGame3;
-const gameForm = screenGame3.querySelector(`.game__content`);
 
-gameForm.addEventListener(`click`, function () {
-  renderScreen(statsElement);
-});
-
-const back = screenGame3.querySelector(`.back`);
-
-back.addEventListener(`click`, function () {
-  renderScreen(greeScreen);
-});

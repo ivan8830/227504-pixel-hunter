@@ -1,8 +1,12 @@
-import {getElementFromTemplate, renderScreen} from "./utils";
+import {getElementFromTemplate, getScope1, renderScreen} from "./utils";
 import greeScreen from "./greeting";
+import {footerTemplate} from "./footer";
+import {data} from "./data";
+import {headerTemplateGame} from "./header-game";
 
 const statsElement = function () {
-  const stata = `
+  const stata = getElementFromTemplate(`
+  ${headerTemplateGame(data, false)}
   <div class="result">
     <h1>Победа!</h1>
     <table class="result__table">
@@ -23,7 +27,7 @@ const statsElement = function () {
           </ul>
         </td>
         <td class="result__points">×&nbsp;100</td>
-        <td class="result__total">900</td>
+        <td class="result__total">${getScope1(data)}</td>
       </tr>
       <tr>
         <td></td>
@@ -37,7 +41,7 @@ const statsElement = function () {
         <td class="result__extra">Бонус за жизни:</td>
         <td class="result__extra">2&nbsp;<span class="stats__result stats__result--alive"></span></td>
         <td class="result__points">×&nbsp;50</td>
-        <td class="result__total">100</td>
+        <td class="result__total">${data.life * 50}</td>
       </tr>
       <tr>
         <td></td>
@@ -47,7 +51,7 @@ const statsElement = function () {
         <td class="result__total">-100</td>
       </tr>
       <tr>
-        <td colspan="5" class="result__total  result__total--final">950</td>
+        <td colspan="5" class="result__total  result__total--final">${getScope1(data) + (data.life * 50)}</td>
       </tr>
     </table>
     <table class="result__table">
@@ -103,14 +107,16 @@ const statsElement = function () {
       </tr>
     </table>
   </div>
-`;
-  return getElementFromTemplate(stata);
+  ${footerTemplate()}
+`);
+  const back = stata.querySelector(`.back`);
+
+  back.addEventListener(`click`, function () {
+    renderScreen(greeScreen(data));
+  });
+  return stata;
 };
 
 export default statsElement;
 
-const back = statsElement.querySelector(`.back`);
 
-back.addEventListener(`click`, function () {
-  renderScreen(greeScreen);
-});
