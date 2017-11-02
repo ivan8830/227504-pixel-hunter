@@ -1,10 +1,9 @@
 import {getElementFromTemplate, renderScreen} from "./utils";
 import rulScreen from "./rules";
-import {data} from "./data";
 import {footerTemplate} from "./footer";
 
 
-const greeScreen = function () {
+const greeScreen = function (data) {
   const greeting = getElementFromTemplate(`
   <div class="greeting central--blur">
     <div class="greeting__logo">

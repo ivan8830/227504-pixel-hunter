@@ -2,11 +2,10 @@ import {getElementFromTemplate, renderScreen} from "./utils";
 import screenGame1 from "./game-1";
 import greeScreen from "./greeting";
 import {headerTemplateGame} from "./header-game";
-import {data} from "./data";
 import {footerTemplate} from "./footer";
 
 
-const rulScreen = function () {
+const rulScreen = function (data) {
   const rules = getElementFromTemplate(`
   ${headerTemplateGame(data, true)}
   <div class="rules">
@@ -37,7 +36,7 @@ const rulScreen = function () {
 
   rulesForm.addEventListener(`submit`, function (e) {
     data.name = input.value;
-    renderScreen(screenGame1(data));
+    renderScreen(screenGame1(data, data.questions[0]));
     e.preventDefault();
   });
   const back = rules.querySelector(`.back`);

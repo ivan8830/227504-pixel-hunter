@@ -2,7 +2,8 @@ import {getElementFromTemplate, renderScreen} from "./utils";
 import greeScreen from "./greeting";
 import {footerTemplate} from "./footer";
 
-const introElement = function () {
+
+const introElement = function (data) {
   const intro = getElementFromTemplate(` 
   <div id="main" class="central__content">
     <div id="intro" class="intro">
@@ -14,7 +15,7 @@ const introElement = function () {
 `);
   const star = intro.querySelector(`.intro__asterisk`);
   star.addEventListener(`click`, function () {
-    renderScreen(greeScreen());
+    renderScreen(greeScreen(data));
   });
   return intro;
 };

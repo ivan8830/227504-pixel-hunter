@@ -2,10 +2,9 @@ import {getElementFromTemplate, renderScreen} from "./utils";
 import screenGame3 from "./game-3";
 import greeScreen from "./greeting";
 import {footerTemplate} from "./footer";
-import {data} from "./data";
 import {headerTemplateGame} from "./header-game";
 
-const screenGame2 = function () {
+const screenGame2 = function (data) {
   const game2 = getElementFromTemplate(`
   ${headerTemplateGame(data, false)}
   <div class="game">

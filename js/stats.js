@@ -1,10 +1,9 @@
 import {getElementFromTemplate, getScope1, renderScreen} from "./utils";
 import greeScreen from "./greeting";
 import {footerTemplate} from "./footer";
-import {data} from "./data";
 import {headerTemplateGame} from "./header-game";
 
-const statsElement = function () {
+const statsElement = function (data) {
   const stata = getElementFromTemplate(`
   ${headerTemplateGame(data, false)}
   <div class="result">
